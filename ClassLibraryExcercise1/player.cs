@@ -60,12 +60,14 @@
 
         public void AddExperience(int experience)
         {
-            while (Experience + experience >= 100)
+            if (experience > 0)
             {
-                Level++;
-                experience -= 100;
+                while (Experience + experience >= 100)
+                {
+                    Level += 1;
+                    experience -= 100;
+                }
             }
-            Experience = experience;
         }
         public void ResetExperience()
         {
