@@ -4,7 +4,16 @@ namespace ClassLibraryExcercise1
 {
     public class Player
     {
-        public string Name { get; set; }
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            private set
+            {
+                if (value != "") _name = value;
+                else _name = "Player";
+            }
+        }
 
         private int _health;
         public int Health
@@ -34,6 +43,7 @@ namespace ClassLibraryExcercise1
             private set
             {
                 if (value > 0) Experience = value;
+                else throw new ArgumentOutOfRangeException("Experience must be greater than 0");
             }
         }
         private int _maxHealth;

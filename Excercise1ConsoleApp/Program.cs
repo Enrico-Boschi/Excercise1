@@ -22,12 +22,13 @@ class Program()
             player.AddExperience(156);
             player.AddExperience(-500); //To verify
         }
-        catch (Exception ex) { Console.WriteLine(ex.Message); }
+        catch (ArgumentOutOfRangeException ex) { Console.WriteLine(ex.Message); }
        
         try
         {
             player.TakeDamage(-1);
         }
         catch (Exception ex) { Console.WriteLine(ex.Message); }
+        Console.WriteLine(player.Name + " " + player.Level + " " + player.Experience + " " + player.Gold + " " + player.Health);
     }
 }
