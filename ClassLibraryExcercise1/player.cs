@@ -1,23 +1,23 @@
-﻿namespace ClassLibraryExcercise1
+﻿using System.Data;
+
+namespace ClassLibraryExcercise1
 {
     public class Player
     {
         public string Name { get; set; }
+
+        private int _health;
         public int Health
         {
-            get;
+            get { return _health; } 
             private set
             {
-                if (IsAlive)
+                if (value >= 0 && value <= MaxHealth)
                 {
-                    if (value < 0)
-                    {
-                        Health = 0;
-                        IsAlive = false;
-                    }
-                    else if (value > MaxHealth) Health = MaxHealth;
-                    else Health = value;
+                    _health = value;
+                    if (value == 0) IsAlive = false;
                 }
+                else throw new ArgumentOutOfRangeException("Health must be between 0 and MaxHealth");
             }
         }
         public int Level
@@ -25,8 +25,7 @@
             get;
             private set
             {
-                if (value < 1) throw new ArgumentException("Level must be greater than 1");
-                else Level = value;
+                if (value > 1) Level = value;
             }
         }
         public int Experience
@@ -34,17 +33,17 @@
             get;
             private set
             {
-                if (value < 0) throw new ArgumentException("Experience must be greater than 0");
-                else Experience = value;
+                if (value > 0) Experience = value;
             }
         }
+        private int _maxHealth;
         public int MaxHealth
         {
-            get;
+            get { return _maxHealth; }
             private set
             {
-                if (value <= 0) throw new ArgumentException("MaxHealth must be greater than 0");
-                else MaxHealth = value;
+                if (value > 0) _maxHealth = value;
+                else throw new ArgumentOutOfRangeException("MaxHealth must be greater than 0");
             }
         }
         /*public bool IsAlive { 

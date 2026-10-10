@@ -16,14 +16,14 @@ class Program()
             player.Heal(-100);
         }
         catch (Exception ex) { Console.WriteLine(ex.Message); }
-        /*try 
+        try 
         {
             player.AddExperience(99);
             player.AddExperience(156);
-            //player.AddExperience(-500); //To verify
+            player.AddExperience(-500); //To verify
         }
         catch (Exception ex) { Console.WriteLine(ex.Message); }
-        */
+       
         try
         {
             player.TakeDamage(-1);
